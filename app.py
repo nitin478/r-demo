@@ -1,6 +1,6 @@
 """Rackspace demo application."""
 
-from rackspace_app import APP, API, db
+from rackspace_app import APP, API, db, LOGGER
 from rackspace_app.endpoints import product_api
 
 
@@ -10,5 +10,6 @@ API.add_resource(
 
 
 if __name__ == '__main__':
+    LOGGER.info('Starting Server...')
     db.Database().run()  # Runs Cassandra database server.
     APP.run(debug=APP.config['DEBUG'])

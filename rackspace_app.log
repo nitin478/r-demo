@@ -1,0 +1,60 @@
+2014-11-15 19:12:06,559 INFO app.py:13 Starting Server...
+2014-11-15 19:12:13,658 INFO product_api.py:29 Recieved GET request for product ID: 11155455334
+2014-11-15 19:12:13,658 INFO db_cache_mixin.py:36 Fetching DB for product ID: 11155455334.
+2014-11-15 19:12:13,662 ERROR product_api.py:34 Error while fetching product ID 11155455334: 
+2014-11-15 19:13:05,004 INFO product_api.py:29 Recieved GET request for product ID: 11155455334
+2014-11-15 19:13:05,004 INFO db_cache_mixin.py:36 Fetching DB for product ID: 11155455334.
+2014-11-15 19:13:05,008 ERROR product_api.py:34 Error while fetching product ID 11155455334: 
+2014-11-15 19:13:25,092 INFO app.py:13 Starting Server...
+2014-11-15 19:13:27,583 INFO product_api.py:29 Recieved GET request for product ID: 11155455334
+2014-11-15 19:13:27,583 INFO db_cache_mixin.py:36 Fetching DB for product ID: 11155455334.
+2014-11-15 19:15:42,675 ERROR product_api.py:34 Error while fetching product ID 11155455334: 
+2014-11-15 19:15:53,502 INFO product_api.py:48 Recieved POST request for product ID: 11155455334
+2014-11-15 19:15:53,502 INFO db_cache_mixin.py:55 Inserting product with ID 11155455334 in to DB.
+2014-11-15 19:15:59,524 INFO product_api.py:29 Recieved GET request for product ID: 11155455334
+2014-11-15 19:15:59,524 INFO db_cache_mixin.py:36 Fetching DB for product ID: 11155455334.
+2014-11-15 19:17:45,076 INFO product_api.py:48 Recieved POST request for product ID: 11155455334
+2014-11-15 19:17:45,076 INFO db_cache_mixin.py:55 Inserting product with ID 11155455334 in to DB.
+2014-11-15 19:17:49,760 INFO product_api.py:29 Recieved GET request for product ID: 11155455334
+2014-11-15 19:18:28,038 INFO product_api.py:48 Recieved POST request for product ID: 11155455334
+2014-11-15 19:18:28,038 INFO db_cache_mixin.py:55 Inserting product with ID 11155455334 in to DB.
+2014-11-15 19:18:36,617 INFO product_api.py:29 Recieved GET request for product ID: 11155455334
+2014-11-15 19:19:13,231 INFO product_api.py:48 Recieved POST request for product ID: abc
+2014-11-15 19:19:13,231 INFO db_cache_mixin.py:55 Inserting product with ID abc in to DB.
+2014-11-15 19:19:17,889 INFO product_api.py:29 Recieved GET request for product ID: abc
+2014-11-15 19:19:17,889 INFO db_cache_mixin.py:36 Fetching DB for product ID: abc.
+2014-11-15 19:20:22,377 INFO product_api.py:29 Recieved GET request for product ID: abcd
+2014-11-15 19:20:22,378 INFO db_cache_mixin.py:36 Fetching DB for product ID: abcd.
+2014-11-15 19:20:29,371 ERROR product_api.py:34 Error while fetching product ID abcd: 
+2014-11-15 19:21:36,147 INFO product_api.py:29 Recieved GET request for product ID: abcd
+2014-11-15 19:21:36,148 INFO db_cache_mixin.py:36 Fetching DB for product ID: abcd.
+2014-11-15 19:21:40,246 INFO app.py:13 Starting Server...
+2014-11-15 19:21:42,674 INFO product_api.py:29 Recieved GET request for product ID: abcd
+2014-11-15 19:21:42,674 INFO db_cache_mixin.py:36 Fetching DB for product ID: abcd.
+2014-11-15 19:21:42,678 ERROR product_api.py:34 Error while fetching product ID abcd: 
+2014-11-15 19:26:19,114 INFO app.py:13 Starting Server...
+2014-11-15 19:26:23,091 INFO product_api.py:29 Recieved GET request for product ID: abcd
+2014-11-15 19:26:23,092 INFO db_cache_mixin.py:36 Fetching DB for product ID: abcd.
+2014-11-15 19:27:52,709 INFO app.py:13 Starting Server...
+2014-11-15 19:27:55,226 INFO product_api.py:29 Recieved GET request for product ID: abcd
+2014-11-15 19:27:55,227 INFO db_cache_mixin.py:36 Fetching DB for product ID: abcd.
+2014-11-15 19:28:41,946 ERROR product_api.py:38 Error while fetching product ID abcd: 
+2014-11-15 19:28:44,063 INFO app.py:13 Starting Server...
+2014-11-15 19:28:46,550 INFO product_api.py:29 Recieved GET request for product ID: abcd
+2014-11-15 19:28:46,551 INFO db_cache_mixin.py:36 Fetching DB for product ID: abcd.
+2014-11-15 19:33:24,135 INFO app.py:13 Starting Server...
+2014-11-15 19:33:26,514 INFO product_api.py:29 Recieved GET request for product ID: abcd
+2014-11-15 19:33:26,514 INFO db_cache_mixin.py:36 Fetching DB for product ID: abcd.
+2014-11-15 19:33:26,518 ERROR product_api.py:34 No data found with product ID abcd.
+2014-11-15 19:43:03,100 INFO app.py:13 Starting Server...
+2014-11-15 19:43:07,011 INFO product_api.py:29 Recieved GET request for product ID: abcd
+2014-11-15 19:43:07,011 INFO db_cache_mixin.py:36 Fetching DB for product ID: abcd.
+2014-11-15 19:43:07,015 ERROR product_api.py:34 No data found with product ID abcd.
+2014-11-15 19:43:27,282 INFO product_api.py:52 Recieved POST request for product ID: abcd
+2014-11-15 19:43:27,282 INFO db_cache_mixin.py:55 Inserting product with ID abcd in to DB.
+2014-11-15 19:43:51,712 INFO product_api.py:52 Recieved POST request for product ID: abcd
+2014-11-15 19:43:51,713 INFO db_cache_mixin.py:55 Inserting product with ID abcd in to DB.
+2014-11-15 19:44:00,536 INFO app.py:13 Starting Server...
+2014-11-15 19:44:05,727 INFO product_api.py:52 Recieved POST request for product ID: abcd
+2014-11-15 19:44:05,728 INFO db_cache_mixin.py:55 Inserting product with ID abcd in to DB.
+2014-11-15 19:44:05,732 ERROR product_api.py:66 Error while saving product ID abcd: 

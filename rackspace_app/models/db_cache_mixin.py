@@ -1,4 +1,5 @@
 """Implements DB cache mixin layer."""
+from rackspace_app import LOGGER
 from rackspace_app.models import REDIS_CLIENT
 import pickle
 
@@ -32,8 +33,7 @@ class DbCacheMixin(object):
         value = kwargs[key_name]
         data = REDIS_CLIENT.get(value)
         if not data:
-            print '*' * 100
-            print 'Fecthing DB.....'
+            LOGGER.info('Fetching DB for product ID: %s.', value)
             data = cls.get(**kwargs)
             REDIS_CLIENT.set(value, pickle.dumps(data))
         else:
@@ -51,5 +51,7 @@ class DbCacheMixin(object):
             kwargs: Dictionary containing column name to value mapping.
         """
         key_name = cls._primary_keys.keys()[0]
+        value = kwargs[key_name]
+        LOGGER.info('Inserting product with ID %s in to DB.', value)
         cls.create(**kwargs)
         REDIS_CLIENT.delete(key_name)

@@ -5,7 +5,7 @@
 class Config(object):
     """Defines default configurations for application."""
 
-    DEBUG = True
+    DEBUG = False
     TESTING = True
     DATABASE_IP = ['127.0.0.1']
     DATABASE_NAME = 'rackspace_demo'

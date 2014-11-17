@@ -12,4 +12,4 @@ API.add_resource(
 if __name__ == '__main__':
     LOGGER.info('Starting Server...')
     db.Database().run()  # Runs Cassandra database server.
-    APP.run(debug=APP.config['DEBUG'])
+    APP.run(host=APP.config['SERVER_IP'], debug=APP.config['DEBUG'])

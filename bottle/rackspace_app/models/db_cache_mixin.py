@@ -57,3 +57,19 @@ class DbCacheMixin(object):
         cls.create(**kwargs)
         REDIS_CLIENT.delete(value)
 
+    @classmethod
+    def cached_delete(cls, **kwargs):
+        """Deletes a column DB and from cache.
+
+        Use this function instead of 'Models.delete()' to enforce clearing of
+        cache for the same key.
+
+        Args:
+            kwargs: Dictionary containing column name to value mapping.
+        """
+        key_name = cls._primary_keys.keys()[0]
+        value = kwargs[key_name]
+        data = cls.get(**kwargs)
+        LOGGER.info('Deleting product with ID %s from DB.', value)
+        data.delete()
+        REDIS_CLIENT.delete(value)

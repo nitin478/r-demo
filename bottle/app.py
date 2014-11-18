@@ -14,15 +14,21 @@ class Server(object):
     def __init__(self):
         self.route()
 
-    def route(self):
+    def route(self):  # pylint: disable=no-self-use
+        """
+        Method to define dynamic routing with appropriate callbacks for
+        RESTFULL service methods GET, POST and DELETE
+        """
+
         APP.route('/Rackspace/api/v1.0/product/<product_id>', \
                   method="GET", callback=Product().get)
         APP.route('/Rackspace/api/v1.0/product/<product_id>', \
                   method="POST", callback=Product().post)
         APP.route('/Rackspace/api/v1.0/product/<product_id>', \
-                  method="DELETE", callback=Product().delData)
+                  method="DELETE", callback=Product().delete)
 
-    def start(self):
+    def start(self):  # pylint: disable=no-self-use
+        """Implements method to run the in-built http server."""
         APP.run(host=APP.config.SERVER_IP, debug=APP.config.DEBUG)
 
 if __name__ == '__main__':

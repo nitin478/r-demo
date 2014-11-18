@@ -23,7 +23,7 @@ class DbCacheMixin(object):
         cache and cache will be filled with data for future retrievals.
 
         Args:
-            kwargs: Dictionary contaning primary key name to value mapping.
+            kwargs: Dictionary containing primary key name to value mapping.
                 Only one primary key is supported here.
 
         Returns:
@@ -42,7 +42,7 @@ class DbCacheMixin(object):
 
     @classmethod
     def cached_create(cls, **kwargs):
-        """Creates coloumn in to DB and deletes key from cache.
+        """Creates column in to DB and deletes key from cache.
 
         Use this function instead of 'Models.create()' to enforce clearing of
         cache for the same key.

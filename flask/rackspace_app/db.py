@@ -14,6 +14,6 @@ class Database(object):
         self.database_name = APP.config['DATABASE_NAME']
 
     def run(self):
-        """Runs DB server and sync models with Cassandra coloumn family."""
+        """Runs DB server and sync models with Cassandra column family."""
         connection.setup(self.database_ip, self.database_name)
         sync_table(products.ProductsDetails)

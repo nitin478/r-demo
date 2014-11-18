@@ -22,7 +22,7 @@ class Product(restful.Resource):
     def __init__(self):
         pass
 
-    def get(self, product_id):  # pylint: disable=no-self-use
+    def get(self, product_id):  #pylint: disable=no-self-use
         """Gets a product information by its product ID.
 
         Args:
@@ -31,7 +31,7 @@ class Product(restful.Resource):
         Returns:
             A dictionary containing product info as JSON string.
         """
-        LOGGER.info('Recieved GET request for product ID: %s', product_id)
+        LOGGER.info('Received GET request for product ID: %s', product_id)
         try:
             data = products.ProductsDetails.cached_get(product_id=product_id)
         except products.ProductsDetails.DoesNotExist:
@@ -44,9 +44,9 @@ class Product(restful.Resource):
                        (product_id, error.message))
             LOGGER.error(message)
             return {'success': False, 'msg': message}, INTERNAL_ERROR
-        return {'msg': data.product_json}
+        return {'success': True, 'data': data.product_json}
 
-    def post(self, product_id):  # pylint: disable=no-self-use
+    def post(self, product_id, request=request):  #pylint: disable=no-self-use
         """Puts a product information in to DB with product ID as a key.
 
         Args:
@@ -55,7 +55,7 @@ class Product(restful.Resource):
         Returns:
             A dictionary containing success message.
         """
-        LOGGER.info('Recieved POST request for product ID: %s', product_id)
+        LOGGER.info('Received POST request for product ID: %s', product_id)
         data = request.form.get('data', '{}')
         if not data:
             # Return '400' with 'no data to save' message.
@@ -66,14 +66,14 @@ class Product(restful.Resource):
             products.ProductsDetails.cached_create(
                     product_id=product_id, product_name=product_name,
                     product_json=data)
-        except Exception as error:
+        except Exception as error:  #pylint: disable=broad-except
             message = ('Error while saving product ID %s: %s' %
                        (product_id, error.message))
             LOGGER.error(message)
             return {'success': False, 'msg': message}, INTERNAL_ERROR
         return {'success': True, 'msg': 'Data posted successfully.'}
 
-    def delete(self, product_id):  # pylint: disable=no-self-use
+    def delete(self, product_id):  #pylint: disable=no-self-use
         """Deletes a product information from DB.
 
         Args:
@@ -82,7 +82,7 @@ class Product(restful.Resource):
         Returns:
             A dictionary containing success message.
         """
-        LOGGER.info('Recieved DELETE request for product ID: %s', product_id)
+        LOGGER.info('Received DELETE request for product ID: %s', product_id)
         try:
             products.ProductsDetails.cached_delete(product_id=product_id)
         except products.ProductsDetails.DoesNotExist:
@@ -90,7 +90,7 @@ class Product(restful.Resource):
             LOGGER.error(message)
             # Return '500' with 'no data found' message.
             return {'success': False, 'msg': message}, INTERNAL_ERROR
-        except Exception as error:
+        except Exception as error:  #pylint: disable=broad-except
             message = ('Error while deleting product ID %s: %s' %
                        (product_id, error.message))
             LOGGER.error(message)

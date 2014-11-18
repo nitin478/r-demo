@@ -11,7 +11,7 @@ class TestDbCacheMixin(unittest.TestCase):
     """Test class for DbCacheMixin class."""
 
     def setUp(self):
-        """Sets up the test enviroment."""
+        """Sets up the test environment."""
         self.org_redis_get = db_cache_mixin.REDIS_CLIENT.get
         self.org_redis_delete = db_cache_mixin.REDIS_CLIENT.delete
         self.org_models_get = products.ProductsDetails.get
@@ -27,7 +27,7 @@ class TestDbCacheMixin(unittest.TestCase):
         }
 
     def tearDown(self):
-        """Tears down the test enviroment set by setUp."""
+        """Tears down the test environment set by setUp."""
         db_cache_mixin.REDIS_CLIENT.get = self.org_redis_get
         db_cache_mixin.REDIS_CLIENT.delete = self.org_redis_delete
         products.ProductsDetails.create = self.org_models_create

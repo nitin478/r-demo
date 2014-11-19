@@ -4,7 +4,7 @@ import json
 import unittest
 
 from mock import MagicMock
-from rackspace_app.endpoints.product_api import Product
+from rackspace_app.endpoints.product_api import Product, Products
 from rackspace_app.models import products
 
 
@@ -25,19 +25,14 @@ class TestProduct(unittest.TestCase):
         self.product = Product()
         self.product_id = "12345"
         self.product_name = "Cisco 5SA"
-        self.product_json = {
-                "product_id":self.product_id,
-                "product_name": self.product_name,
-                "product_type" : "FIREWALL"
-        }
+        self.product_type = "FIREWALL"
         self.value = {
                 "product_id":self.product_id,
                 "product_name":self.product_name,
-                "product_json":self.product_json
+                "product_type":self.product_type
         }
-        self.test_data = {"data" : json.dumps(self.product_json)}
-        self.request = type('self.request', (), {'form':{}})
-        self.request.form.update(self.test_data)
+        self.request = type('self.request', (),
+                {'data': json.dumps(self.value)})
 
     def tearDown(self):
         """Tears down the test environment set up by setUp."""
@@ -56,11 +51,11 @@ class TestProduct(unittest.TestCase):
         self.product.post(product_id=self.product_id, request=self.request)
         products.ProductsDetails.cached_create.assert_called_once_with(
                 product_id=self.product_id, product_name=self.product_name,
-                product_json=json.dumps(self.product_json))
+                product_type=self.product_type)
 
     def test_post_no_data(self):
         """Test for cached_create function."""
-        self.request.form['data'] = ''
+        self.request.data = '{}'
         result = self.product.post(
                 product_id=self.product_id, request=self.request)
         self.assertFalse(result[0]['success'])
@@ -79,14 +74,14 @@ class TestProduct(unittest.TestCase):
 
     def test_get(self):
         """Test for cached_get function."""
-        products.ProductsDetails.product_id = self.product_id,
+        products.ProductsDetails.product_id = self.product_id
         products.ProductsDetails.product_name = self.product_name
-        products.ProductsDetails.product_json = self.product_json
+        products.ProductsDetails.product_type = self.product_type
         product_details_obj = products.ProductsDetails()
         products.ProductsDetails.cached_get.return_value = product_details_obj
         result = self.product.get(product_id=self.product_id)
         self.assertTrue(result['success'])
-        self.assertEquals(result['data'], self.product_json)
+        self.assertEquals(result['data'], self.value)
         products.ProductsDetails.cached_get.assert_called_once_with(
                 product_id=self.product_id)
 
@@ -132,3 +127,47 @@ class TestProduct(unittest.TestCase):
                    (self.product_id, ''))
         return_exception = {'success': False, 'msg': message}, 500
         self.assertEquals(result, return_exception)
+
+
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-instance-attributes
+class TestProducts(unittest.TestCase):
+    """Test class for Products class."""
+
+    def setUp(self):
+        """Sets up test environment."""
+
+
+    def tearDown(self):
+        """Tears down the test environment set up by setUp."""
+
+
+    def test_init(self):  #pylint: disable=no-self-use
+        """Test for __init__ function."""
+        # Nothing to test. Just to get __init__ cover.
+        Product()
+
+    def test_get(self):
+        """Test for get all products function."""
+        org_objects = products.ProductsDetails.objects
+        products.ProductsDetails.objects = MockObjects()
+        data = Products().get()
+        self.assertTrue()
+        products.ProductsDetails.objects = org_objects
+
+    def test_get_exception(self):
+        """Test for get all products function."""
+        data = Products().get()
+
+
+
+class MockObjects():
+    """Mock class to create 'products.ProductsDetails.objects' object to avoid
+        DB call"""
+
+    def all(self):
+        product1 = products.ProductsDetails(
+                product_id='11', product_name='Test1', product_type='Test Type')
+        product2 = products.ProductsDetails(
+                product_id='22', product_name='Test2', product_type='Test Type')
+        return [product1, product2]

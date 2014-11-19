@@ -20,5 +20,5 @@ class TestProductsDetails(unittest.TestCase):
         """Test for properties available in ProductDetails model."""
         product_details = products.ProductsDetails()
         available_keys = product_details.keys()
-        expected_keys = ['product_id', 'product_name', 'product_json']
+        expected_keys = ['product_id', 'product_name', 'product_type']
         self.assertEquals(expected_keys, available_keys)

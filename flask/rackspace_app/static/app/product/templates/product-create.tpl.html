@@ -1,5 +1,5 @@
 ﻿<rx-page>
-    <div class="page-actions">        
+    <div class="page-actions">
     </div>
 
     <div class="clear component-description">
@@ -14,9 +14,9 @@
                         <rx-form-item label="Product Name">
                                 <input type="text" ng-model="product.product_name" placeholder="Product Name" required/>
                             </rx-form-item>
-     
-                <div class="modal-footer">           
-                        <button class="button submit" ng-disabled="createProductForm.$invalid" ng-click="saveProduct();">Add</button>
+
+                <div class="modal-footer">
+                        <button class="button submit" ng-disabled="form.name.$invalid" ng-click="saveProduct();">Add</button>
                        <button class="button cancel" ng-click="clear();">Clear</button>
                     </div>
             </form>

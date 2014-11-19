@@ -4,9 +4,9 @@
 </div>
 
         <div class="modal-body device-details-Cont">
-               
+
             <div class="loading" ng-hide="true" rx-spinner="dark"></div>
-            <form class="modal-form rx-form" novalidate name="settingsForm">
+            <form class="modal-form rx-form" novalidate name="form.name">
                 <rx-form-item label="Current Configured Url">
                     <label type="text" ng-bind="config.ConfiguredRestUrl" />
                 </rx-form-item>
@@ -17,9 +17,9 @@
             </form>
 
         </div>
-     
-        <div class="modal-footer">           
-            <button class="button submit" ng-disabled="settingsForm.$invalid" ng-click="saveConfiguration();">Update</button>
+
+        <div class="modal-footer">
+            <button class="button submit" ng-disabled="form.name.$invalid" ng-click="saveConfiguration();">Update</button>
            <button class="button cancel" ng-click="clear();">Clear</button>
         </div>
 

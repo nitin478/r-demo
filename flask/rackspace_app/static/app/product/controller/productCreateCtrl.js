@@ -7,7 +7,7 @@
         $scope.saveProduct = function () {
             productService.api.saveProduct({ productId: $scope.product.product_id }, $scope.product, function (response) {
                 if (response && response.success) {
-                    $scope.product = {};
+                    $scope.clear();
                     $rootScope.$broadcast(rx.Constants.PublisherEventPayLoad.SHOW_SUCCESS_COMMAND, new rx.ExceptionHandler.SuccessAlert(response.msg || ''));
                 }
                 else {
@@ -18,6 +18,8 @@
 
         $scope.clear = function () {
             $scope.product = {};
-            //$scope.form.name.$setPristine(true);
+            if ($scope.form && $scope.form.name && $scope.form.name.$setPristine) {
+                $scope.form.name.$setPristine(true);
+            }
         }
     }]);

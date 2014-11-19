@@ -61,8 +61,6 @@ class Product(restful.Resource):
             A dictionary containing success message.
         """
         LOGGER.info('Received POST request for product ID: %s', product_id)
-        print request
-        print request.data
         data = json.loads(request.data)
         product_name = data.get('product_name', '')
         product_type = data.get('product_type', '')

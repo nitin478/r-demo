@@ -1,17 +1,15 @@
 "Rackspace demo application"
 
 import bottle
-
-print dir(bottle.FormsDict)
-
 from rackspace_app import APP, db, LOGGER
-from rackspace_app.endpoints.product_api import Product
+from rackspace_app.endpoints.product_api import Product, Products
 
 class Server(object):
 
     """ Class to initialize bottle server """
 
     def __init__(self):
+        bottle.TEMPLATE_PATH.insert(0, '/home/umeshbhaskaran/r_demo/bottle/rackspace_app/templates')
         self.route()
 
     def route(self):  # pylint: disable=no-self-use
@@ -20,12 +18,16 @@ class Server(object):
         RESTFULL service methods GET, POST and DELETE
         """
 
-        APP.route('/Rackspace/api/v1.0/product/<product_id>', \
+        APP.route('/rackspace/bottle/api/v1.0/products', \
+                  method="GET", callback=Products().get)
+        APP.route('/rackspace/bottle/api/v1.0/product/<product_id>', \
                   method="GET", callback=Product().get)
-        APP.route('/Rackspace/api/v1.0/product/<product_id>', \
+        APP.route('/rackspace/bottle/api/v1.0/product/<product_id>', \
                   method="POST", callback=Product().post)
-        APP.route('/Rackspace/api/v1.0/product/<product_id>', \
+        APP.route('/rackspace/bottle/api/v1.0/product/<product_id>', \
                   method="DELETE", callback=Product().delete)
+        APP.route('/static/<filename:path>', callback=Product().static)
+        APP.route('/index.html', callback=Product().index)
 
     def start(self):  # pylint: disable=no-self-use
         """Implements method to run the in-built http server."""

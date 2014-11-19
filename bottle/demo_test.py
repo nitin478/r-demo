@@ -13,13 +13,15 @@ PRODUCT_DETAILS_SUITE = unittest.TestLoader().loadTestsFromTestCase(
         products_test.TestProductsDetails)
 PRODUCT_API_SUITE = unittest.TestLoader().loadTestsFromTestCase(
         product_api_test.TestProduct)
-
+PRODUCTS_API_SUITE = unittest.TestLoader().loadTestsFromTestCase(
+        product_api_test.TestProducts)
 
 ALL_TESTS = unittest.TestSuite(
     [
         DB_CACHE_MIXIN_SUITE,
         PRODUCT_DETAILS_SUITE,
-        PRODUCT_API_SUITE
+        PRODUCT_API_SUITE,
+        PRODUCTS_API_SUITE
     ])
 
 unittest.TextTestRunner(verbosity=2).run(ALL_TESTS)

@@ -23,7 +23,7 @@ class DbCacheMixin(object):
         cache and cache will be filled with data for future retrievals.
 
         Args:
-            kwargs: Dictionary containing primary key name to value mapping.
+            kwargs: Dictionary contadpining primary key name to value mapping.
                 Only one primary key is supported here.
 
         Returns:

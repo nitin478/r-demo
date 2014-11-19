@@ -61,7 +61,8 @@ class Product(restful.Resource):
             A dictionary containing success message.
         """
         LOGGER.info('Received POST request for product ID: %s', product_id)
-        #data = requerequest.formst.form.get('data', '{}')
+        print request
+        print request.data
         data = json.loads(request.data)
         product_name = data.get('product_name', '')
         product_type = data.get('product_type', '')
@@ -69,9 +70,6 @@ class Product(restful.Resource):
             # Return '400' with 'no data to save' message.
             return {'success': False, 'msg': 'No data to post.'}, BAD_REQUEST
         try:
-            #data_dict = json.loads(data)
-            #product_name = data_dict.get('product_name', '')
-            #product_type = data_dict.get('product_type', '')
             products.ProductsDetails.cached_create(
                     product_id=product_id, product_name=product_name,
                     product_type=product_type)

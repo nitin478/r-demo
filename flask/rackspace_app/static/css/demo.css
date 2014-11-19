@@ -52,7 +52,7 @@ pre[class*="language-"] {background: transparent;}
 .header{min-height:90px;}
 
 .notification-holder{top: -55px;z-index:1055;}
-.notification-container {position: relative;z-index:1055;}
+.notification-container {position: fixed;z-index:1055;left;0;right:0}
 .notification-bar > * {line-height: 24px; vertical-align: middle;}
 .notification-bar:before {content: ''; display: inline-block; float: left; width: 16px; height: 16px;background-image:url("../img/graphics.png"); background-repeat: no-repeat; position: relative; top: 4px; margin-right: 5px;}
 .notification em {white-space: nowrap;overflow: hidden; text-overflow: ellipsis; display: block; max-width: 800px; word-wrap: normal;}

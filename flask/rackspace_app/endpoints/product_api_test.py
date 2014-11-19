@@ -137,10 +137,8 @@ class TestProducts(unittest.TestCase):
     def setUp(self):
         """Sets up test environment."""
 
-
     def tearDown(self):
         """Tears down the test environment set up by setUp."""
-
 
     def test_init(self):  #pylint: disable=no-self-use
         """Test for __init__ function."""
@@ -152,22 +150,20 @@ class TestProducts(unittest.TestCase):
         org_objects = products.ProductsDetails.objects
         products.ProductsDetails.objects = MockObjects()
         data = Products().get()
-        self.assertTrue()
+        products_list = data['products']
+        self.assertEquals(2, len(products_list))
+        self.assertEquals('Cisco 5SA', products_list[0]['product_name'])
         products.ProductsDetails.objects = org_objects
 
-    def test_get_exception(self):
-        """Test for get all products function."""
-        data = Products().get()
 
-
-
-class MockObjects():
+class MockObjects(object):
     """Mock class to create 'products.ProductsDetails.objects' object to avoid
         DB call"""
 
-    def all(self):
+    def all(self):  #pylint: disable=no-self-use
+        """Overriding all() method of objects."""
         product1 = products.ProductsDetails(
-                product_id='11', product_name='Test1', product_type='Test Type')
+                product_id='11', product_name='Test1', product_type='Cisco 5SA')
         product2 = products.ProductsDetails(
-                product_id='22', product_name='Test2', product_type='Test Type')
+                product_id='22', product_name='Test2', product_type='Cisco 5SA')
         return [product1, product2]
